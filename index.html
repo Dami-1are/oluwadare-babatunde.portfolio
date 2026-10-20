@@ -4,156 +4,891 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Analyst | My Portfolio</title>
+  <meta name="description" content="Portfolio of Babatunde Oluwadare Ayomide, Data Analyst specialising in SQL, Power BI, Python, business intelligence and supply chain analytics.">
+  <title>Babatunde Oluwadare Ayomide | Data Portfolio</title>
+
   <style>
+    :root {
+      --navy: #102438;
+      --navy-light: #19364d;
+      --teal: #38d6b0;
+      --ink: #172c40;
+      --muted: #64758a;
+      --bg: #f5f8fb;
+      --white: #ffffff;
+      --border: #e1e8ef;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #182b40;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
       line-height: 1.7;
     }
-    header {
-      background: #142b45;
-      color: white;
-      padding: 65px 8%;
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
     }
-    header p { color: #b9d6e7; }
-    nav { margin-bottom: 40px; }
-    nav a {
+
+    .navbar {
+      background: var(--navy);
       color: white;
-      margin-right: 20px;
+      padding: 20px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.05rem;
       text-decoration: none;
     }
-    .button {
+
+    .brand span { color: var(--teal); }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      font-size: .9rem;
+      color: #d6e2ed;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 90% 20%, #28566a 0%, transparent 35%),
+        var(--navy);
+      color: white;
+      padding: 95px 0 100px;
+    }
+
+    .hero-content { max-width: 800px; }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.7rem);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 18px 0;
+    }
+
+    .hero h1 span { color: var(--teal); }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #cbd8e5;
+      max-width: 690px;
+    }
+
+    .hero-summary {
+      max-width: 680px;
+      color: #e2eaf1;
+      margin-top: 22px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
       display: inline-block;
-      background: #38cba4;
-      color: #10283c;
-      padding: 10px 18px;
-      border-radius: 6px;
+      padding: 12px 21px;
+      border-radius: 7px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
+      border: 1px solid #71869a;
+      transition: .2s ease;
     }
-    main { padding: 35px 8%; }
-    .skills, .projects {
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--navy);
+      border-color: var(--teal);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .quick-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .fact {
+      border: 1px solid #456074;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: .85rem;
+      color: #e0eaf2;
+    }
+
+    section { padding: 75px 0; }
+
+    .section-heading { margin-bottom: 32px; }
+
+    .section-heading .eyebrow { letter-spacing: 1.5px; }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: -1px;
+      margin: 7px 0 10px;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0;
+    }
+
+    .about-grid {
       display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 35px;
+      align-items: start;
     }
+
+    .about-copy p { color: #52657a; }
+
+    .highlight-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 12px;
+    }
+
+    .highlight-card h3 { margin-top: 0; }
+
+    .highlight-card ul {
+      padding-left: 20px;
+      color: #52657a;
+    }
+
+    .skills-grid, .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
     .card {
       background: white;
-      padding: 22px;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px #182b4010;
-    }
-    a { color: #087e8b; }
-    footer {
-      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 25px;
-      background: #142b45;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px #1024380c;
+    }
+
+    .card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: #e5faf4;
+      color: #087f6a;
+      border-radius: 10px;
+      font-size: 1.3rem;
+    }
+
+    .card h3 { margin: 15px 0 8px; }
+
+    .card p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 17px;
+    }
+
+    .tag {
+      background: #edf3f7;
+      color: #38536b;
+      border-radius: 5px;
+      padding: 4px 8px;
+      font-size: .78rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-card .project-link {
+      margin-top: auto;
+      padding-top: 15px;
+      color: #087f79;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    .experience {
+      border-left: 2px solid #b9e9dc;
+      margin-left: 8px;
+      padding-left: 28px;
+    }
+
+    .job {
+      position: relative;
+      margin-bottom: 35px;
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--teal);
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      left: -37px;
+      top: 7px;
+    }
+
+    .job h3 { margin: 0; font-size: 1.2rem; }
+
+    .job-meta {
+      color: #087f79;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .job ul {
+      color: #52657a;
+      padding-left: 20px;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .education-card {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 23px;
+      border-radius: 10px;
+    }
+
+    .education-card h3 { margin: 0 0 8px; }
+
+    .education-card p {
+      margin: 5px 0;
+      color: var(--muted);
+    }
+
+    .cert-card {
+      background: var(--navy);
       color: white;
+      padding: 28px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cert-card p { color: #cbd8e5; margin-bottom: 0; }
+
+    .contact-section {
+      background: var(--navy);
+      color: white;
+    }
+
+    .contact-section .section-intro { color: #cbd8e5; }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 25px;
+    }
+
+    .contact-links a {
+      color: var(--teal);
+      text-decoration: none;
+      border: 1px solid #456074;
+      padding: 10px 14px;
+      border-radius: 7px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 22px 0;
+      background: #0b1b2b;
+      color: #bdcbd7;
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .skills-grid, .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links { gap: 12px; }
+
+      .hero { padding: 65px 0; }
+
+      h1 { letter-spacing: -1px; }
+
+      section { padding: 55px 0; }
+
+      .skills-grid, .project-grid, .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cert-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
-<body>
 
-<header>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">BOA<span>.</span> Portfolio</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <p>DATA ANALYST | SQL | POWER BI | PYTHON</p>
-  <h1>Turning Data into Decisions.</h1>
-  <p>
-    I am a Data Analyst with experience in business
-    and operational data, reporting, and visualisation.
-    I turn complex data into actionable insights.
-  </p>
-  <a class="button" href="#projects">Explore My Projects</a>
-</header>
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">Data Analytics · Business · Operations</div>
 
-<main>
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I combine data analytics with practical experience
-      in logistics and terminal operations. I am interested
-      in solving business problems through data, and
-      exploring machine learning applications in agriculture.
-    </p>
-  </section>
+        <h1>Babatunde Oluwadare <span>Ayomide.</span></h1>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="skills">
-      <div class="card">
-        <h3>Data Analysis</h3>
-        <p>SQL, Excel, Python, Pandas, NumPy</p>
-      </div>
-      <div class="card">
-        <h3>Visualisation</h3>
-        <p>Power BI, Tableau, DAX, KPI reporting</p>
-      </div>
-      <div class="card">
-        <h3>Business</h3>
-        <p>Data cleaning, reporting, logistics analytics</p>
+        <p class="hero-subtitle">
+          Data Analyst | Data Scientist | Supply Chain Analyst |
+          Business Intelligence Analyst
+        </p>
+
+        <p class="hero-summary">
+          Turning complex data into actionable insights that improve
+          business performance, strengthen operational decisions, and
+          reveal opportunities for growth.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore My Projects ↗</a>
+          <a class="btn" href="#contact">Let's Connect</a>
+        </div>
+
+        <div class="quick-facts">
+          <span class="fact">SQL & Python</span>
+          <span class="fact">Power BI & Tableau</span>
+          <span class="fact">Supply Chain Analytics</span>
+          <span class="fact">Lagos, Nigeria</span>
+        </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>SQL Business Analysis</h3>
-        <p>
-          Analysed business data using SQL queries,
-          joins, aggregations and data validation.
-        </p>
-        <a href="https://github.com/Dami-1are">
-          View on GitHub →
-        </a>
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2>Connecting data to business impact.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I am a results-driven Data Analyst experienced in transforming
+              complex datasets into actionable insights for business growth
+              and strategic decision-making.
+            </p>
+            <p>
+              My background combines data analytics with hands-on experience
+              in logistics and terminal operations. I work with SQL, Power BI,
+              Python, Excel and Tableau to analyse performance, monitor KPIs,
+              develop dashboards and communicate findings to stakeholders.
+            </p>
+            <p>
+              I am particularly interested in business intelligence, supply
+              chain optimisation, and the application of data science and
+              machine learning to agricultural challenges.
+            </p>
+          </div>
+
+          <div class="highlight-card">
+            <h3>What I bring</h3>
+            <ul>
+              <li>Data-driven problem solving</li>
+              <li>Dashboard development and KPI monitoring</li>
+              <li>Data cleaning, validation and reconciliation</li>
+              <li>Operational and commercial reporting</li>
+              <li>Stakeholder communication and data storytelling</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Power BI Dashboards</h3>
-        <p>
-          Developed interactive dashboards and KPIs
-          to communicate trends and business performance.
-        </p>
-        <a href="https://github.com/Dami-1are">
-          Explore Projects →
-        </a>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Technical toolkit</div>
+          <h2>Skills & Expertise</h2>
+          <p class="section-intro">
+            Tools and capabilities I use to turn raw information into
+            reliable reporting and meaningful business insights.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="card">
+            <div class="card-icon">▥</div>
+            <h3>Data Analysis & Visualisation</h3>
+            <p>Analysing trends and presenting findings through clear,
+              accessible reports and dashboards.</p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Advanced Excel</span>
+              <span class="tag">DAX</span>
+              <span class="tag">Data Storytelling</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>Databases & Data Modelling</h3>
+            <p>Preparing, transforming, reconciling and structuring data
+              for dependable analysis.</p>
+            <div class="tags">
+              <span class="tag">SQL</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">Data Modelling</span>
+              <span class="tag">GCP</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>Programming & Analytics</h3>
+            <p>Using programming and analytical libraries to explore
+              data and support repeatable workflows.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Exploratory Analysis</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">↗</div>
+            <h3>Business Intelligence</h3>
+            <p>Translating business requirements into meaningful
+              measures, reports and performance insights.</p>
+            <div class="tags">
+              <span class="tag">KPI Design</span>
+              <span class="tag">Reporting</span>
+              <span class="tag">Trend Analysis</span>
+              <span class="tag">Data Quality</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⇄</div>
+            <h3>Supply Chain & Operations</h3>
+            <p>Applying analytical thinking to operational performance,
+              logistics reporting and process monitoring.</p>
+            <div class="tags">
+              <span class="tag">Operational KPIs</span>
+              <span class="tag">Logistics</span>
+              <span class="tag">Performance Reporting</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">◎</div>
+            <h3>Professional Skills</h3>
+            <p>Working across teams to understand business problems
+              and communicate reliable, useful findings.</p>
+            <div class="tags">
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Collaboration</span>
+              <span class="tag">Attention to Detail</span>
+              <span class="tag">Communication</span>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="card">
-        <h3>Agricultural Data Research</h3>
-        <p>
-          Exploring machine learning for soil organic
-          carbon prediction using secondary datasets.
-        </p>
-        <a href="https://github.com/Dami-1are">
-          View Research Code →
-        </a>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Selected work</div>
+          <h2>Featured Projects</h2>
+          <p class="section-intro">
+            Explore my analytical work, dashboards, SQL solutions and
+            developing research interests. Project links should lead
+            directly to the relevant repository or published dashboard.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="card project-card">
+            <div class="card-icon">⌘</div>
+            <h3>SQL Business Analysis</h3>
+            <p>
+              Business data analysis using SQL to explore datasets,
+              join tables, aggregate results, validate records and
+              answer practical business questions.
+            </p>
+            <div class="tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Data Analysis</span>
+              <span class="tag">Data Quality</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/Dami-1are"
+               target="_blank" rel="noopener noreferrer">
+              Browse GitHub projects ↗
+            </a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">▥</div>
+            <h3>Superstore Sales Dashboard</h3>
+            <p>
+              Business intelligence and visualisation focused on
+              sales, profit, regional performance and trends that
+              help users investigate business results.
+            </p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Excel</span>
+              <span class="tag">KPIs</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/Dami-1are"
+               target="_blank" rel="noopener noreferrer">
+              Find project files ↗
+            </a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">◉</div>
+            <h3>Bank Customer Churn</h3>
+            <p>
+              Customer analytics exploring churn patterns and
+              customer characteristics to support retention-focused
+              business questions.
+            </p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">Customer Analytics</span>
+              <span class="tag">Visualisation</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/Dami-1are"
+               target="_blank" rel="noopener noreferrer">
+              Find project files ↗
+            </a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">↗</div>
+            <h3>Business & Operational KPIs</h3>
+            <p>
+              Reporting and dashboard development for tracking
+              performance, identifying variations and improving
+              visibility into business operations.
+            </p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">DAX</span>
+              <span class="tag">Reporting</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/Dami-1are"
+               target="_blank" rel="noopener noreferrer">
+              Browse GitHub projects ↗
+            </a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">⇄</div>
+            <h3>Supply Chain & Logistics Analytics</h3>
+            <p>
+              Applying data analysis to operational reporting,
+              KPI monitoring, data reconciliation and logistics
+              performance improvement.
+            </p>
+            <div class="tags">
+              <span class="tag">Operations</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Business Intelligence</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/Dami-1are"
+               target="_blank" rel="noopener noreferrer">
+              Explore my work ↗
+            </a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-icon">♧</div>
+            <h3>Soil Organic Carbon Research</h3>
+            <p>
+              Research interest in machine learning for soil organic
+              carbon prediction using remote sensing, environmental
+              information and secondary datasets.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Agriculture</span>
+            </div>
+            <a class="project-link"
+               href="https://github.com/Dami-1are"
+               target="_blank" rel="noopener noreferrer">
+              Explore research code ↗
+            </a>
+          </article>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary"
+             href="https://github.com/Dami-1are"
+             target="_blank" rel="noopener noreferrer">
+            View My GitHub Profile ↗
+          </a>
+        </div>
       </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Professional journey</div>
+          <h2>Work Experience</h2>
+          <p class="section-intro">
+            Experience in analytics, reporting, commercial performance
+            and terminal operations.
+          </p>
+        </div>
+
+        <div class="experience">
+          <article class="job">
+            <h3>Data Analyst (Terminal Operations Executive)</h3>
+            <div class="job-meta">
+              Medlog Transport & Logistics · August 2025 – Present
+            </div>
+            <ul>
+              <li>
+                Analysed operational performance data and KPIs to identify
+                trends and performance gaps, contributing to a reported
+                22% improvement in terminal productivity.
+              </li>
+              <li>
+                Developed Power BI dashboards and automated management
+                reports, reducing manual reporting time by 40%.
+              </li>
+              <li>
+                Conducted data validation and reconciliation across
+                operational systems, maintaining 99% reporting accuracy.
+              </li>
+              <li>
+                Prepared recurring and ad-hoc reports to communicate
+                operational trends and support management decisions.
+              </li>
+              <li>
+                Collaborated with Operations and Commercial teams to
+                resolve discrepancies and improve performance monitoring,
+                contributing to a reported 15% improvement in vessel
+                and truck turnaround.
+              </li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <h3>Data Analyst</h3>
+            <div class="job-meta">
+              Biwa Technology · June 2023 – July 2025
+            </div>
+            <ul>
+              <li>
+                Extracted, cleaned and analysed multi-source datasets
+                using SQL to identify business, sales and operational trends.
+              </li>
+              <li>
+                Developed and maintained 10+ Power BI dashboards,
+                improving performance visibility and reducing
+                decision-making time by 30%.
+              </li>
+              <li>
+                Analysed sales, market and cost trends using Power BI
+                and Advanced Excel, supporting recommendations associated
+                with a reported 15% increase in annual sales.
+              </li>
+              <li>
+                Worked with Finance, Operations and Commercial teams
+                to define KPIs and standardise reporting requirements.
+              </li>
+              <li>
+                Developed a supplier-quality reporting solution and
+                presented analytical findings to support business planning.
+              </li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <h3>Junior Data Analyst</h3>
+            <div class="job-meta">
+              FanMilk PLC · March 2023 – June 2023
+            </div>
+            <ul>
+              <li>
+                Analysed sales performance, market trends and business
+                KPIs using Power BI and Advanced Excel.
+              </li>
+              <li>
+                Conducted exploratory data analysis to identify trends,
+                variations and commercial performance gaps.
+              </li>
+              <li>
+                Developed dashboards and recurring reports to improve
+                visibility into key metrics and support business planning.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Academic background</div>
+          <h2>Education & Certification</h2>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card">
+            <h3>Lagos State University (LASU)</h3>
+            <p>Postgraduate Diploma (PGD), Computer Science</p>
+            <p><strong>Status:</strong> In View</p>
+          </article>
+
+          <article class="education-card">
+            <h3>Federal University of Technology, Akure</h3>
+            <p>Bachelor of Technology (B.Tech)</p>
+            <p>Crop, Soil and Pest Management · 2023</p>
+          </article>
+        </div>
+
+        <h3 style="margin-top:35px">Professional Certification</h3>
+        <div class="cert-card">
+          <div class="card-icon">✓</div>
+          <div>
+            <h3 style="margin:0">Data Analysis & Visualisation</h3>
+            <p>3 Million Technical Talent (3MTT) · NITDA · 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Let's work together</div>
+          <h2>Have a data challenge?</h2>
+          <p class="section-intro">
+            I welcome opportunities in data analytics, business
+            intelligence, supply chain analytics and data science,
+            as well as professional collaborations.
+          </p>
+        </div>
+
+        <div class="contact-links">
+          <a href="mailto:bdamilare596@gmail.com">Email Me ↗</a>
+          <a href="https://github.com/Dami-1are"
+             target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/babatunde-oluwadare-ayomide/"
+             target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+
+        <p style="color:#cbd8e5; margin-top:25px">
+          Lagos, Nigeria · Open to professional opportunities
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Babatunde Oluwadare Ayomide · Built with HTML & CSS ·
+      Published with GitHub Pages
     </div>
-  </section>
-
-  <section id="contact">
-    <h2>Let's Connect</h2>
-    <p>Interested in data analytics, research, or collaboration?</p>
-    <p>
-      <a href="https://github.com/Dami-1are">GitHub</a> |
-      <a href="https://www.linkedin.com/">LinkedIn</a>
-    </p>
-  </section>
-</main>
-
-<footer>
-  <p>© 2026 | Data Analyst Portfolio</p>
-</footer>
-
+  </footer>
 </body>
 </html>
